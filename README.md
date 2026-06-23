@@ -1,4 +1,4 @@
-# China Trade Data Analysis Toolkit
+# trade-data-toolkit
 
 A Python toolkit for processing and analyzing Chinese customs trade data.
 

@@ -1,12 +1,21 @@
-# 分析脚本
+# China Trade Data Analysis Toolkit
 
-这个小脚本用于读取一批从“全球贸易与产业增长实验室”导出的 CSV 文件（带有前置的元数据行），自动检测数据表头并将时间序列列 '值' 按指定分组画出对比折线图。
+A Python toolkit for processing and analyzing Chinese customs trade data.
 
-使用示例：
+This project supports automatic CSV parsing, provincial trade comparison, export structure analysis, market concentration analysis, and report-ready visualization generation.
 
-    python 分析.py --data-dir /Users/jessica/Desktop/分析/csvs --group-by 伙伴国 --top-n 8 --outdir ./plots
+## Features
 
-在 macOS 上，推荐先创建并激活一个 virtualenv，然后安装依赖：
+* Automatic CSV header detection
+* Encoding fallback support (UTF-8 / GBK / GB18030)
+* Batch processing of multiple trade datasets
+* Provincial export structure comparison
+* Export market analysis
+* Zhejiang vs. National structure comparison
+* Heatmap and bar chart generation
+* PNG table export for policy reports
+
+## Installation
 
 ```bash
 python3 -m venv .venv
@@ -14,4 +23,48 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-脚本会尝试自动检测 CSV 的编码（utf-8, gbk），并在遇到常见列名时进行处理。若 CSV 的结构不同，请打开 `分析.py` 根据实际列名调整。
+## Usage
+
+Generate trade analysis charts:
+
+```bash
+python Trade_Analysis.py \
+    --data-dir ./csvs \
+    --group-by 伙伴国 \
+    --top-n 8 \
+    --outdir ./plots
+```
+
+Generate five-province comparison tables:
+
+```bash
+python Trade_Analysis.py \
+    --data-dir ./csvs \
+    --five-provinces 福建,广东,江苏,山东,浙江 \
+    --tables
+```
+
+Generate Zhejiang vs. National comparison:
+
+```bash
+python Trade_Analysis.py \
+    --data-dir ./csvs \
+    --zj-vs-national \
+    --tables
+```
+
+## Data
+
+Trade datasets are not included in this repository due to licensing and data-sharing restrictions.
+
+Users should obtain the original datasets from authorized sources.
+
+## Dependencies
+
+* pandas
+* matplotlib
+* seaborn
+
+## License
+
+For academic and research purposes.
